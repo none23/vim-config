@@ -1,0 +1,1 @@
+/home/n/none23/dotfiles/.vim/colors/nwsome.vim

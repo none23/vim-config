@@ -1,0 +1,14 @@
+dirs
+undos
+tmp
+viminfo
+.vim/autoload
+.vim/bundle
+.vim/dirs
+.vim/plugged
+!.vim/autoload/vim-airline-themes/autoload/airline/themes/simple.vim
+.config/ranger/tagged
+.*.pyc
+__pycache__
+node_modules
+.yarn
