@@ -1,5 +1,7 @@
 {
   "suggest.timeout": 5000,
+  "prettier.enable": true,
+  "prettier.onlyUseLocalVersion": true,
   "prettier.semi": true,
   "prettier.trailingComma": "all",
   "prettier.disableSuccessMessage": true,
@@ -10,9 +12,11 @@
   "eslint.run": "onSave",
   "tsserver.enable": true,
   "tsserver.implicitProjectConfig.checkJs": false,
+  "tsserver.useLocalTsdk": true,
   "tsserver.enableJavascript": true,
   "tsserver.disableAutomaticTypeAcquisition": true,
   "tsserver.formatOnType": false,
+  "tsserver.formatOnSave": true,
   "tsserver.reportStyleChecksAsWarnings": false,
   "javascript.suggest.enabled": true,
   "typescript.suggest.enabled": true,
@@ -25,24 +29,17 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    },
     "rescript": {
       "enable": true,
       "module": "~/.config/nvim/plugged/vim-rescript/rescript-vscode/extension/server/out/server.js",
       "args": ["--node-ipc"],
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
-    },
-    "tsserver": {
-      "enable": false,
-      "filetypes": [
-        "typescript",
-        "typescript.tsx",
-        "typescriptreact",
-        "javascript",
-        "javascript.jsx",
-        "javascriptreact"
-      ],
-      "module": "node"
     },
     "flow": {
       "command": "flow",
