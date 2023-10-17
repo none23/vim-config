@@ -26,17 +26,16 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'sheerun/vim-polyglot'
-Plug 'ap/vim-css-color'
+" Plug 'ap/vim-css-color'
 Plug 'w0rp/ale'
-Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
-Plug 'jparise/vim-graphql'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'rescript-lang/vim-rescript'
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+" Plug 'jparise/vim-graphql'
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'wakatime/vim-wakatime'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-apathy'
 Plug 'jreybert/vimagit'
-Plug 'rescript-lang/vim-rescript'
+" Plug 'rescript-lang/vim-rescript'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
