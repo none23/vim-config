@@ -1,7 +1,7 @@
 {
   "suggest.timeout": 5000,
   "prettier.enable": true,
-  "prettier.onlyUseLocalVersion": true,
+  "prettier.onlyUseLocalVersion": false,
   "prettier.semi": true,
   "prettier.trailingComma": "all",
   "prettier.disableSuccessMessage": true,
