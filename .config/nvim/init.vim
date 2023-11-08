@@ -178,9 +178,9 @@ autocmd BufNewFile,BufRead *.{js,jsx,mjs,jsm,es,es6,flow} setfiletype javascript
 " autocmd FileType typescriptreact setlocal filetype=javascript.jsx
 " autocmd FileType javascriptreact setlocal filetype=javascript.jsx
 " autocmd FileType typescript setlocal filetype=javascript
-autocmd FileType typescriptreact setlocal syntax=javascript.jsx
-autocmd FileType javascriptreact setlocal syntax=javascript.jsx
-autocmd FileType typescript setlocal syntax=javascript
+" autocmd FileType typescriptreact setlocal syntax=javascript.jsx
+" autocmd FileType javascriptreact setlocal syntax=javascript.jsx
+" autocmd FileType typescript setlocal syntax=javascript
 
 " consider these files be json:
 " .babelrc, .prettierrc, .eslintrc, etc.
