@@ -7,7 +7,7 @@
   "prettier.disableSuccessMessage": true,
   "codeLens.enable": false,
   "eslint.autoFixOnSave": true,
-  "eslint.packageManager": "yarn",
+  "eslint.packageManager": "pnpm",
   "eslint.quiet": true,
   "eslint.run": "onSave",
   "tsserver.enable": true,
