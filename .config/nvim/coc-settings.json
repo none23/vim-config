@@ -41,15 +41,15 @@
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
     },
-    "flow": {
-      "command": "flow",
-      "args": ["lsp"],
-      "filetypes": ["javascript", "javascriptreact", "javascript.jsx"],
-      "initializationOptions": {},
-      "requireRootPattern": true,
-      "settings": {},
-      "rootPatterns": [".flowconfig"]
-    },
+    //     "flow": {
+    //       "command": "flow",
+    //       "args": ["lsp"],
+    //       "filetypes": ["javascript", "javascriptreact", "javascript.jsx"],
+    //       "initializationOptions": {},
+    //       "requireRootPattern": true,
+    //       "settings": {},
+    //       "rootPatterns": [".flowconfig"]
+    //     },
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": ["dockerfile"],
