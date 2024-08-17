@@ -12,7 +12,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/tabman.vim'
@@ -342,15 +341,6 @@ let g:javascript_conceal_arrow_function = '⇒'
 
 " }}}
 "
-" easy-motion {{{
-map <leader> <plug>(easymotion-prefix)
-
-map <leader>l <plug>(easymotion-lineforward)
-map <leader>j <plug>(easymotion-j)
-map <leader>k <plug>(easymotion-k)
-map <leader>h <plug>(easymotion-linebackward))
-
-" }}}
 
 " expand-region {{{
 vmap v <plug>(expand_region_expand)
