@@ -170,16 +170,6 @@ autocmd BufRead * autocmd  BufWritePre <buffer> %s/\s\+$//e
 " use foldmethod=marker
 autocmd FileType zsh,bash,shell,vim,sql setlocal foldmethod=marker
 
-" syntax highlighting in .flow files
-autocmd BufNewFile,BufRead *.{js,jsx,mjs,jsm,es,es6,flow} setfiletype javascript
-
-" consider .ts and .tsx files to be javascript
-" autocmd FileType typescriptreact setlocal filetype=javascript.jsx
-" autocmd FileType javascriptreact setlocal filetype=javascript.jsx
-" autocmd FileType typescript setlocal filetype=javascript
-" autocmd FileType typescriptreact setlocal syntax=javascript.jsx
-" autocmd FileType javascriptreact setlocal syntax=javascript.jsx
-" autocmd FileType typescript setlocal syntax=javascript
 
 " consider these files be json:
 " .babelrc, .prettierrc, .eslintrc, etc.
@@ -239,9 +229,6 @@ set undofile
 set undodir=~/.vim/dirs/undos
 
 set viminfo+=n~/.vim/dirs/viminfo
-
-" store yankring history file there too
-let g:yankring_history_dir = '~/.vim/dirs/'
 
 " create needed directories if they don't exist
 if !isdirectory(&backupdir)
@@ -439,7 +426,7 @@ let g:ale_lint_delay = 100
 let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
-  \ 'javascript': ['flow-language-server', 'css-languageserver', 'eslint'],
+  \ 'javascript': ['tsserver', 'css-languageserver', 'eslint'],
   \ 'typescript': ['tsserver', 'eslint'],
   \ 'typescriptreact': ['tsserver', 'eslint'],
   \ 'css': ['css-languageserver'],
@@ -520,26 +507,6 @@ nnoremap <leader>a :Ack!<space>
 let NERDTreeShowHidden=1
 nmap <F5> :NERDTreeToggle<cr>
 
-" }}}
-
-" (off?) lsp-servers {{{
-" let g:lsp_insert_text_enabled = 1
-" let g:lsp_virtual_text_enabled = 0
-"
-" au User lsp_setup call lsp#register_server({
-"   \ 'name': 'flow',
-"   \ 'cmd': {server_info->['flow', 'lsp']},
-"   \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
-"   \ 'whitelist': ['javascript', 'javascript.jsx'],
-"   \ })
-"
-" au User lsp_setup call lsp#register_server({
-"     \ 'name': 'css-languageserver',
-"     \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
-"     \ 'whitelist': ['css', 'less', 'scss', 'sass'],
-"     \ })
-"
-"
 " }}}
 
 " coc {{{
