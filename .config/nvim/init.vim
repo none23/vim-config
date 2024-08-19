@@ -272,9 +272,6 @@ map <leader>o vv:sort<cr>
 " move curent line's last character to the next line
 map <leader>q $i<cr><esc>J
 
-" escape key in terminal
-:tnoremap <esc><esc> <c-\><c-n>
-
 " run macro on selected lines
 xnoremap @ :<c-u>call ExecuteMacroOverVisualRange()<cr>
 function! ExecuteMacroOverVisualRange()
@@ -301,6 +298,9 @@ map tp :tabp<cr>
 " term-mode
 map <F2> :below 10sp term://$SHELL<cr>i
 " map <F4> :below 10sp term:///usr/bin/node<cr>i
+" escape key in terminal
+:tnoremap <esc><esc> <c-\><c-n>
+
 
 " yank to system clipboard
 nmap <F8> "+yy
