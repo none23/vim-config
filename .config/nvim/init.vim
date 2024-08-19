@@ -15,7 +15,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/tabman.vim'
-Plug 'mileszs/ack.vim'
 Plug 'lambdalisue/suda.vim'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-expand-region'
@@ -493,14 +492,6 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " }}}
-
-
-" ack {{{
-cnoreabbrev Ack Ack!
-nnoremap <leader>a :Ack!<space>
-
-" }}}
-
 
 
 " nerd-tree {{{
