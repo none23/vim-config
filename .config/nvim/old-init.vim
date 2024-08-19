@@ -33,6 +33,7 @@ Plug 'wakatime/vim-wakatime'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-apathy'
 Plug 'jreybert/vimagit'
+Plug 'wesleimp/stylua.nvim'
 " Plug 'rescript-lang/vim-rescript'
 
 " Telescope

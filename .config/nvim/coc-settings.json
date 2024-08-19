@@ -28,6 +28,7 @@
   "typescript.showUnused": false,
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "Lua.diagnostics.globals": ["vim"],
   "languageserver": {
     "graphql": {
       "command": "graphql-lsp",
