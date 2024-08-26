@@ -43,7 +43,13 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-telescope/telescope.nvim" },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	{ "github/copilot.vim" },
+	-- { 'github/copilot.vim' },
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({})
+		end,
+	},
 })
 
 -- Easy plugin updates
@@ -426,6 +432,12 @@ require("lualine").setup({
 	winbar = {},
 	inactive_winbar = {},
 	extensions = {},
+})
+
+require("supermaven-nvim").setup({
+	keymaps = {
+		accept_suggestion = "<Tab>",
+	},
 })
 
 -- vim:syntax=lua
