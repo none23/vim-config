@@ -160,7 +160,7 @@ vim.g.ale_javascript_eslint_suppress_missing_config = 1
 vim.g.ale_javascript_eslint_suppress_eslintignore = 1
 vim.g.ale_javascript_prettier_use_local_config = 1
 
-vim.api.nvim_set_keymap("n", ",e", ":ALENextWrap<CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", ",e", ":ALENextWrap<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>an", ":ALENextWrap<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>ap", ":ALEPreviousWrap<CR>", { noremap = true })
 
@@ -258,6 +258,7 @@ keyset("i", "<c-space>", "coc#refresh()", { silent = true, expr = true })
 
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+keyset("n", ",e", "<Plug>(coc-diagnostic-next)", { silent = true })
 keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", { silent = true })
 keyset("n", "]g", "<Plug>(coc-diagnostic-next)", { silent = true })
 
@@ -439,5 +440,3 @@ require("supermaven-nvim").setup({
 		accept_suggestion = "<Tab>",
 	},
 })
-
--- vim:syntax=lua
