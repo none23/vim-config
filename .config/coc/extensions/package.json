@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "coc-tsserver": ">=2.1.4",
+    "@yaegassy/coc-tailwindcss3": ">=0.5.5",
+    "coc-eslint": ">=1.7.0",
+    "coc-css": ">=2.1.0",
+    "coc-actions": ">=1.5.0",
+    "coc-git": ">=2.7.0",
+    "coc-json": ">=1.9.2",
+    "coc-prettier": ">=9.3.2",
+    "coc-docker": ">=1.0.2",
+    "coc-lua": ">=2.0.6",
+    "coc-pyright": ">=1.1.375"
+  },
+  "lastUpdate": 1725695989904
+}

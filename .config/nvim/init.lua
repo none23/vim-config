@@ -34,7 +34,7 @@ require("lazy").setup({
 	{ "scrooloose/nerdtree" },
 	{ "Xuyuanp/nerdtree-git-plugin" },
 	{ "ap/vim-css-color" },
-	{ "w0rp/ale" },
+	{ "stevearc/conform.nvim", opts = {} },
 	{ "neoclide/coc.nvim", build = "yarn install --frozen-lockfile" },
 	{ "wakatime/vim-wakatime" },
 	{ "mattn/emmet-vim" },
@@ -56,19 +56,6 @@ require("lazy").setup({
 vim.api.nvim_create_user_command("PU", function()
 	require("lazy").update()
 end, {})
-
--- Concealment
-vim.opt.conceallevel = 1
-vim.g.javascript_conceal_arrow_function = "⇒"
--- vim.g.javascript_conceal_function = 'ƒ'
--- vim.g.javascript_conceal_return = '⇚'
--- vim.g.javascript_conceal_this = '@'
--- vim.g.javascript_conceal_null = 'ø'
--- vim.g.javascript_conceal_undefined = '¿'
--- vim.g.javascript_conceal_NaN = 'ℕ'
--- vim.g.javascript_conceal_prototype = '¶'
--- vim.g.javascript_conceal_static = '•'
--- vim.g.javascript_conceal_super = 'Ω'
 
 -- Expand Region
 vim.api.nvim_set_keymap("v", "v", "<Plug>(expand_region_expand)", {})
@@ -120,72 +107,6 @@ vim.g.user_emmet_settings = {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "javascript.jsx", "typescript.tsx" },
 	command = "EmmetInstall",
-})
-
--- ALE
-vim.g.ale_set_quickfix = 1
-vim.g.ale_keep_list_window_open = 0
-vim.g.ale_list_window_size = 6
-vim.g.ale_completion_enabled = 0
-vim.g.ale_lint_on_text_changed = "never"
-vim.g.ale_lint_on_enter = 1
-vim.g.ale_lint_on_insert_leave = 0
-vim.g.ale_lint_delay = 100
-vim.g.ale_fix_on_save = 1
-
-vim.g.ale_linters = {
-	javascript = { "tsserver", "css-languageserver", "eslint" },
-	lua = { "lua-language-server" },
-	typescript = { "tsserver", "eslint" },
-	typescriptreact = { "tsserver", "eslint" },
-	css = { "css-languageserver" },
-	scss = { "css-languageserver" },
-}
-
-vim.g.ale_fixers = {
-	javascript = { "prettier", "eslint" },
-	typescript = { "prettier", "eslint" },
-	typescriptreact = { "prettier", "eslint" },
-	json = { "prettier" },
-	jsonc = { "prettier" },
-	json5 = { "prettier" },
-	lua = { "stylua" },
-	css = { "prettier", "stylelint" },
-	scss = { "prettier", "stylelint" },
-	graphql = { "prettier" },
-	markdown = { "prettier" },
-}
-
-vim.g.ale_javascript_eslint_suppress_missing_config = 1
-vim.g.ale_javascript_eslint_suppress_eslintignore = 1
-vim.g.ale_javascript_prettier_use_local_config = 1
-
--- vim.api.nvim_set_keymap("n", ",e", ":ALENextWrap<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>an", ":ALENextWrap<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>ap", ":ALEPreviousWrap<CR>", { noremap = true })
-
-vim.g.ale_change_sign_column_color = 0
-vim.g.ale_sign_column_always = 1
-vim.g.ale_set_signs = 1
-vim.g.ale_open_list = 1
-vim.g.ale_echo_cursor = 1
-vim.g.ale_echo_msg_format = "%s (%linter%) %[code]%"
-vim.g.ale_echo_msg_error_str = "🔥"
-vim.g.ale_echo_msg_warning_str = "💩"
-vim.g.ale_echo_msg_info_str = "👉"
-vim.g.ale_sign_error = "🔥"
-vim.g.ale_sign_warning = "💩"
-vim.g.ale_sign_style_error = "💩"
-vim.g.ale_sign_style_warning = "💩"
-vim.g.ale_sign_info = "👉"
-vim.g.ale_virtualtext_cursor = 0
-vim.g.ale_virtualtext_prefix = ""
-
-vim.api.nvim_create_augroup("CloseLoclistWindowGroup", { clear = true })
-vim.api.nvim_create_autocmd("QuitPre", {
-	group = "CloseLoclistWindowGroup",
-	pattern = "*",
-	command = "if empty(&buftype) | lclose | endif",
 })
 
 -- FZF / Telescope
@@ -314,6 +235,7 @@ vim.api.nvim_create_autocmd("User", {
 
 -- Apply codeAction to the selected region
 -- Example: `<leader>aap` for current paragraph
+---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true }
 keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
 keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
@@ -389,7 +311,6 @@ keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
 keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
 
--- Lualine
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -439,4 +360,28 @@ require("supermaven-nvim").setup({
 	keymaps = {
 		accept_suggestion = "<Tab>",
 	},
+})
+
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		python = { "isort", "black" },
+		rust = { "rustfmt", lsp_format = "fallback" },
+		javascript = { "prettier", "eslint" },
+		css = { "prettier", "stylelint" },
+		scss = { "prettier", "stylelint" },
+		graphql = { "prettier" },
+		markdown = { "prettier" },
+		typescript = { "prettier", "eslint" },
+		typescriptreact = { "prettier", "eslint" },
+		json = { "prettier" },
+		jsonc = { "prettier" },
+		json5 = { "prettier" },
+	},
+})
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
 })
