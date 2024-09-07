@@ -31,8 +31,37 @@ require("lazy").setup({
 	{ "vim-scripts/IndexedSearch" },
 	{ "junegunn/vim-easy-align" },
 	{ "airblade/vim-gitgutter" },
-	{ "scrooloose/nerdtree" },
-	{ "Xuyuanp/nerdtree-git-plugin" },
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+			"3rd/image.nvim",
+		},
+		opts = {
+			window = {
+				mappings = {
+					["Y"] = "none",
+				},
+			},
+			filesystem = {
+				filtered_items = {
+					hide_dotfiles = false,
+					hide_by_name = {
+						".git",
+						".next",
+						".DS_Store",
+					},
+					always_show = {
+						".env",
+					},
+				},
+			},
+		},
+	},
+
 	{ "ap/vim-css-color" },
 	{ "stevearc/conform.nvim", opts = {} },
 	{ "neoclide/coc.nvim", build = "yarn install --frozen-lockfile" },
@@ -116,9 +145,8 @@ vim.api.nvim_set_keymap("n", "<leader>fg", '<cmd>lua require("telescope.builtin"
 vim.api.nvim_set_keymap("n", "<leader>fb", '<cmd>lua require("telescope.builtin").buffers()<CR>', { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>fh", '<cmd>lua require("telescope.builtin").help_tags()<CR>', { noremap = true })
 
--- NERDTree
-vim.g.NERDTreeShowHidden = 1
-vim.api.nvim_set_keymap("n", "<F5>", ":NERDTreeToggle<CR>", { noremap = true })
+-- Neotree
+vim.api.nvim_set_keymap("n", "<F5>", ":Neotree<CR>", { noremap = true })
 
 -- Treesitter Configuration
 local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
