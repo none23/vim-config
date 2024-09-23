@@ -79,6 +79,12 @@ require("lazy").setup({
 			require("supermaven-nvim").setup({})
 		end,
 	},
+
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {},
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+	},
 })
 
 -- Easy plugin updates
