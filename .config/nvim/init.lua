@@ -152,22 +152,13 @@ vim.api.nvim_set_keymap("n", "<leader>fb", '<cmd>lua require("telescope.builtin"
 vim.api.nvim_set_keymap("n", "<leader>fh", '<cmd>lua require("telescope.builtin").help_tags()<CR>', { noremap = true })
 
 -- Neotree
--- TODO: learn vim.api and make this less hacky
-vim.api.nvim_set_keymap("n", "<F5>", ":Neotree filesystem reveal left<CR>:lua ToggleNeotree()<CR>", { noremap = true })
-local neotreeOpen = false
-function ToggleNeotree()
-	neotreeOpen = not neotreeOpen
-	if neotreeOpen then
-		vim.api.nvim_set_keymap("n", "<F5>", ":Neotree toggle<CR>:lua ToggleNeotree()<CR>", { noremap = true })
+vim.keymap.set("n", "<F5>", function()
+	if vim.bo.filetype == "neo-tree" then
+		vim.cmd("Neotree close")
 	else
-		vim.api.nvim_set_keymap(
-			"n",
-			"<F5>",
-			":Neotree filesystem reveal left<CR>:lua ToggleNeotree()<CR>",
-			{ noremap = true }
-		)
+		vim.cmd("Neotree filesystem reveal left")
 	end
-end
+end, { noremap = true, desc = "Toggle Neotree" })
 
 -- Treesitter Configuration
 local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
