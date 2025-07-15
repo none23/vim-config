@@ -3,11 +3,12 @@
 
   "codeLens.enable": false,
 
-  "prettier.enable": true,
-  "prettier.onlyUseLocalVersion": false,
-  "prettier.semi": true,
-  "prettier.trailingComma": "all",
-  "prettier.disableSuccessMessage": true,
+ //  "prettier.enable": true,
+ //  "prettier.onlyUseLocalVersion": false,
+ //  "prettier.semi": true,
+ //  "prettier.trailingComma": "all",
+ //  "prettier.disableSuccessMessage": true,
+ //  "prettier.requireConfig": true,
 
   "eslint.autoFixOnSave": false,
   "eslint.packageManager": "pnpm",
