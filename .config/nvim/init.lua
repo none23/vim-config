@@ -403,6 +403,28 @@ require("supermaven-nvim").setup({
 })
 
 require("conform").setup({
+	formatters = {
+		prettier = {
+			-- cwd means "config working directory"
+			require_cwd = true,
+
+			cwd = require("conform.util").root_file({
+				".prettierrc",
+				".prettierrc.json",
+				".prettierrc.yml",
+				".prettierrc.yaml",
+				".prettierrc.json5",
+				".prettierrc.js",
+				".prettierrc.cjs",
+				".prettierrc.mjs",
+				".prettierrc.toml",
+				"prettier.config.js",
+				"prettier.config.cjs",
+				"prettier.config.mjs",
+			}),
+		},
+	},
+
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "isort", "black" },
