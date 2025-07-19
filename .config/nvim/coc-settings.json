@@ -25,6 +25,7 @@
   "tsserver.reportStyleChecksAsWarnings": false,
   "javascript.suggest.enabled": true,
   "typescript.suggest.enabled": true,
+  "typescript.suggest.completeFunctionCalls": false,
   "javascript.validate.enable": true,
   "typescript.validate.enable": true,
   "javascript.format.enabled": false,
