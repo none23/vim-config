@@ -101,16 +101,26 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	command = "setlocal foldmethod=marker",
 })
 
-vim.api.nvim_create_autocmd({ "BufRead" }, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = {
 		".babelrc",
+		".eslintrc",
+		".huskyrc",
+		".lintstagedrc",
 		".prettierrc",
 		".stylelintrc",
-		".lintstagedrc",
-		".huskyrc",
-		".eslintrc",
 	},
 	command = "setfiletype json",
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = {
+		"*.code-workspace",
+		".coc-settings.json",
+		".vscode/settings.json",
+		"tsconfig.json",
+	},
+	command = "setfiletype jsonc",
 })
 -- }}}
 
