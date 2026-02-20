@@ -72,13 +72,13 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-telescope/telescope.nvim" },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	-- { 'github/copilot.vim' },
-	{
-		"supermaven-inc/supermaven-nvim",
-		config = function()
-			require("supermaven-nvim").setup({})
-		end,
-	},
+	{ "github/copilot.vim", branch = "release" },
+	-- {
+	-- 	"supermaven-inc/supermaven-nvim",
+	-- 	config = function()
+	-- 		require("supermaven-nvim").setup({})
+	-- 	end,
+	-- },
 
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
@@ -396,11 +396,11 @@ require("lualine").setup({
 	extensions = {},
 })
 
-require("supermaven-nvim").setup({
-	keymaps = {
-		accept_suggestion = "<Tab>",
-	},
-})
+-- require("supermaven-nvim").setup({
+-- 	keymaps = {
+-- 		accept_suggestion = "<Tab>",
+-- 	},
+-- })
 
 require("conform").setup({
 	formatters = {
