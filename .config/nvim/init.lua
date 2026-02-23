@@ -20,6 +20,15 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
+		"none23/local-wisper",
+		config = function()
+			require("lw").setup({
+				python_bin = "/home/n/none23/local-wisper/.venv/bin/python",
+			})
+		end,
+	},
+
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
@@ -91,6 +100,8 @@ require("lazy").setup({
 vim.api.nvim_create_user_command("PU", function()
 	require("lazy").update()
 end, {})
+
+vim.keymap.set("n", "<leader>lw", "<cmd>LW<CR>", { noremap = true, silent = true, desc = "Local Whisper" })
 
 -- Expand Region
 vim.api.nvim_set_keymap("v", "v", "<Plug>(expand_region_expand)", {})
