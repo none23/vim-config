@@ -22,9 +22,7 @@ require("lazy").setup({
 	{
 		"none23/local-wisper",
 		config = function()
-			require("lw").setup({
-				python_bin = "/home/n/none23/local-wisper/.venv/bin/python",
-			})
+			require("lw").setup({})
 		end,
 	},
 
