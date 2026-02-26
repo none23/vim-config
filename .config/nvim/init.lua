@@ -22,7 +22,11 @@ require("lazy").setup({
 	{
 		"none23/local-wisper",
 		config = function()
-			require("lw").setup({})
+			require("lw").setup({
+				model = "small",
+				device = "cuda",
+				compute_type = "float16",
+			})
 		end,
 	},
 
