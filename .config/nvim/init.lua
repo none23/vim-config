@@ -83,7 +83,7 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-telescope/telescope.nvim" },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	{ "github/copilot.vim", branch = "release" },
+	-- { "github/copilot.vim", branch = "release" },
 	-- {
 	-- 	"supermaven-inc/supermaven-nvim",
 	-- 	config = function()
