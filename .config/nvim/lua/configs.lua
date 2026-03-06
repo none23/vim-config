@@ -17,7 +17,7 @@ vim.opt.cindent = false
 
 -- Miscellaneous settings {{{
 vim.opt.splitright = true
-vim.opt.cmdheight = 3
+vim.opt.cmdheight = 1
 vim.opt.hidden = true
 vim.opt.updatetime = 200
 vim.opt.shortmess:append("c")
