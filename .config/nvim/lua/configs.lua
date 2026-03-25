@@ -134,7 +134,21 @@ vim.opt.termguicolors = true
 
 vim.opt.background = "dark"
 
+local function apply_diff_highlights()
+	-- Keep diff state on the background so syntax/tree-sitter can color the text.
+	vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#0f3a1d" })
+	vim.api.nvim_set_hl(0, "DiffChange", { bg = "#3a3216" })
+	vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#3a1014" })
+	vim.api.nvim_set_hl(0, "DiffText", { bg = "#5a4718", bold = true })
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	pattern = "*",
+	callback = apply_diff_highlights,
+})
+
 vim.cmd("colorscheme nwsome")
+apply_diff_highlights()
 
 vim.opt.colorcolumn = "100"
 -- }}}

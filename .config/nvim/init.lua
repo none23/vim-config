@@ -79,6 +79,7 @@ require("lazy").setup({
 	{ "wakatime/vim-wakatime" },
 	{ "mattn/emmet-vim" },
 	{ "tpope/vim-apathy" },
+	{ "tpope/vim-fugitive" },
 	{ "jreybert/vimagit" },
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-telescope/telescope.nvim" },
@@ -118,6 +119,7 @@ vim.api.nvim_set_keymap("n", "<Leader>gu", "<Plug>(GitGutterUndoHunk)", {})
 -- Vimagit
 vim.g.magit_default_fold_level = 0
 vim.api.nvim_set_keymap("n", "<leader>gs", ":Magit<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>lg", ":Gvdiffsplit<CR>", { noremap = true, silent = true })
 
 -- Tabman
 vim.g.tabman_toggle = "tl"
@@ -454,6 +456,7 @@ require("conform").setup({
 		json5 = { "prettier" },
 	},
 })
+
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function(args)
