@@ -23,9 +23,10 @@ require("lazy").setup({
 		"none23/local-wisper",
 		config = function()
 			require("lw").setup({
-				model = "small",
+				backend = "parakeet",
 				device = "cuda",
 				compute_type = "float16",
+				vad_filter = false,
 			})
 		end,
 	},
