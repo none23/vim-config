@@ -114,13 +114,26 @@ vim.api.nvim_set_keymap("v", "<C-v>", "<Plug>(expand_region_shrink)", {})
 -- GitGutter
 vim.api.nvim_set_keymap("n", "<Leader>gn", "<Plug>(GitGutterNextHunk)", {})
 vim.api.nvim_set_keymap("n", "<Leader>gp", "<Plug>(GitGutterPrevHunk)", {})
-vim.api.nvim_set_keymap("n", "<Leader>ga", "<Plug>(GitGutterStageHunk)", {})
+vim.keymap.set("n", "<Leader>ga", function()
+	if vim.wo.diff then
+		vim.cmd.normal({ args = { "dp" }, bang = true })
+		return
+	end
+
+	local keys = vim.api.nvim_replace_termcodes("<Plug>(GitGutterStageHunk)", true, false, true)
+	vim.api.nvim_feedkeys(keys, "m", false)
+end, { silent = true, desc = "Stage hunk" })
 vim.api.nvim_set_keymap("n", "<Leader>gu", "<Plug>(GitGutterUndoHunk)", {})
 
 -- Vimagit
 vim.g.magit_default_fold_level = 0
 vim.api.nvim_set_keymap("n", "<leader>gs", ":Magit<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>lg", ":Gvdiffsplit<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>lg", function()
+	vim.cmd("Gvdiffsplit")
+	vim.schedule(function()
+		vim.cmd.wincmd("l")
+	end)
+end, { noremap = true, silent = true, desc = "Open Fugitive diff and focus right pane" })
 
 -- Tabman
 vim.g.tabman_toggle = "tl"
