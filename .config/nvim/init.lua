@@ -77,7 +77,6 @@ require("lazy").setup({
 	{ "ap/vim-css-color" },
 	{ "stevearc/conform.nvim", opts = {} },
 	{ "neoclide/coc.nvim", build = "yarn install --frozen-lockfile" },
-	{ "wakatime/vim-wakatime" },
 	{ "mattn/emmet-vim" },
 	{ "tpope/vim-apathy" },
 	{ "tpope/vim-fugitive" },

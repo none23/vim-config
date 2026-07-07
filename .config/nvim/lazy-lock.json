@@ -23,6 +23,5 @@
   "vim-fugitive": { "branch": "master", "commit": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0" },
   "vim-gitgutter": { "branch": "main", "commit": "55b368d4c68541775b4b253d3c98d3145b695c24" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
-  "vim-wakatime": { "branch": "master", "commit": "d7973b157a632d1edeff01818f18d67e584eeaff" },
   "vimagit": { "branch": "master", "commit": "fc7eda97da4f8182c8abbe6ea7befbd789b8b935" }
 }
