@@ -20,21 +20,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		"none23/local-wisper",
-		config = function()
-			require("lw").setup({
-				backend = "parakeet",
-				device = "cuda",
-				compute_type = "float16",
-				sample_rate = 16000,
-				post_process_model = "gpt-5.6-luna",
-				post_process_glossary_file = "~/.config/local-wisper/glossary.txt",
-			})
-			vim.keymap.set("n", "<leader>lw", "<cmd>LW<CR>", { desc = "Local Speech" })
-		end,
-	},
-
-	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
