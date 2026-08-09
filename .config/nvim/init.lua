@@ -26,8 +26,11 @@ require("lazy").setup({
 				backend = "parakeet",
 				device = "cuda",
 				compute_type = "float16",
-				vad_filter = false,
+				sample_rate = 16000,
+				post_process_model = "gpt-5.6-luna",
+				post_process_glossary_file = "~/.config/local-wisper/glossary.txt",
 			})
+			vim.keymap.set("n", "<leader>lw", "<cmd>LW<CR>", { desc = "Local Speech" })
 		end,
 	},
 
