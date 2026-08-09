@@ -86,7 +86,7 @@ require("lazy").setup({
 	{ "jreybert/vimagit" },
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-telescope/telescope.nvim" },
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", branch = "main", lazy = false, build = ":TSUpdate" },
 	-- { "github/copilot.vim", branch = "release" },
 	-- {
 	-- 	"supermaven-inc/supermaven-nvim",
@@ -193,20 +193,40 @@ end, { noremap = true, desc = "Toggle Neotree" })
 
 -- Treesitter Configuration
 local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
-vim.fn.mkdir(parser_install_dir, "p")
-vim.opt.runtimepath:append(parser_install_dir)
+require("nvim-treesitter").setup({
+	install_dir = parser_install_dir,
+})
+require("nvim-treesitter").install({
+	"bash",
+	"cpp",
+	"css",
+	"dockerfile",
+	"go",
+	"html",
+	"java",
+	"javascript",
+	"json",
+	"kotlin",
+	"lua",
+	"markdown",
+	"markdown_inline",
+	"python",
+	"rust",
+	"toml",
+	"tsx",
+	"typescript",
+	"xml",
+	"yaml",
+})
 
-require("nvim-treesitter.configs").setup({
-	ensure_installed = "all",
-	sync_install = false,
-	auto_install = true,
-	ignore_install = {},
-	parsers_install_dir = parser_install_dir,
-	highlight = {
-		enable = true,
-		disable = {},
-		additional_vim_regex_highlighting = false,
-	},
+vim.treesitter.language.register("bash", "zsh")
+vim.treesitter.language.register("json", "jsonc")
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function(args)
+		pcall(vim.treesitter.start, args.buf)
+	end,
 })
 
 -- https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.lua
