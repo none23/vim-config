@@ -77,6 +77,12 @@
       "command": "bash-language-server",
       "args": ["start"],
       "filetypes": ["sh", "zsh", "bash", "shell"]
+    },
+    "baml": {
+      "command": "baml",
+      "args": ["lsp"],
+      "filetypes": ["baml"],
+      "rootPatterns": ["baml.toml", "baml_src", ".git"]
     }
   }
 }
