@@ -1,5 +1,17 @@
 require("configs")
 
+local baml_command = vim.fn.exepath("baml")
+if baml_command == "" then
+	baml_command = vim.fn.exepath("baml-cli")
+end
+
+local coc_user_config = vim.g.coc_user_config or {}
+coc_user_config["languageserver.baml.enable"] = baml_command ~= ""
+if baml_command ~= "" then
+	coc_user_config["languageserver.baml.command"] = baml_command
+end
+vim.g.coc_user_config = coc_user_config
+
 -- Install lazy.nvim if not already installed
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -177,12 +189,32 @@ vim.keymap.set("n", "<F5>", function()
 end, { noremap = true, desc = "Toggle Neotree" })
 
 -- Treesitter Configuration
+vim.filetype.add({
+	extension = {
+		baml = "baml",
+	},
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").baml = {
+			install_info = {
+				url = "https://github.com/BoundaryML/baml-treesitter",
+				revision = "276b4d8471f1c2f2ce80f182ab46d171b825f2b7",
+				queries = "queries",
+			},
+		}
+	end,
+})
+
 local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
 require("nvim-treesitter").setup({
 	install_dir = parser_install_dir,
 })
 require("nvim-treesitter").install({
 	"bash",
+	"baml",
 	"cpp",
 	"css",
 	"dockerfile",
